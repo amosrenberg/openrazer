@@ -1181,6 +1181,17 @@ class RazerBlackWidowV4MiniHyperSpeedWireless(RazerBlackWidowV4MiniHyperSpeedWir
     USB_PID = 0x02BA
 
 
+class RazerBlackWidowV4LowProfileTklWired():
+    """
+    Class for the Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed(Wired)
+    """
+    USB_VID = 0x1532
+    USB_PID = 0x02D4
+    HAS_MATRIX = True
+
+    DEVICE_IMAGE = "https://assets2.razerzone.com/images/pnx.assets/d0ebf9b718890099da55f79fb6b4569f/razer-blackwidowv4-mini-hyperspeed-usp5.webp"
+
+
 class RazerCynosaChroma(_RippleKeyboard):
     """
     Class for the Razer Cynosa Chroma

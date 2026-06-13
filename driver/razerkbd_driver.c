@@ -229,6 +229,16 @@ static const struct razer_key_translation chroma_keys_9[] = {
     { 0 }
 };
 
+// Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed
+static const struct razer_key_translation chroma_keys_10[] = {
+    { KEY_F8, KEY_SLEEP },
+    { KEY_F9, RAZER_MACRO_KEY },
+    { KEY_F10, RAZER_GAME_KEY },
+    { KEY_F11, RAZER_BRIGHTNESS_DOWN },
+    { KEY_F12, RAZER_BRIGHTNESS_UP },
+    { 0 }
+};
+
 /**
  * Essentially search through the struct array above.
  */
@@ -324,6 +334,7 @@ static void razer_get_report_params(struct usb_device *usb_dev, uint *report_ind
     case USB_DEVICE_ID_RAZER_HUNTSMAN_V3_PRO_MINI:
     case USB_DEVICE_ID_RAZER_HUNTSMAN_V3_PRO_8KHZ:
     case USB_DEVICE_ID_RAZER_BLACKWIDOW_V4_TENKEYLESS_HYPERSPEED_WIRED:
+    case USB_DEVICE_ID_RAZER_BLACKWIDOW_V4_LOW_PROFILE_TENKEYLESS_HYPERSPEED_WIRED:
         *report_index = 0x03;
         *response_index = 0x03;
         *wait = RAZER_BLACKWIDOW_CHROMA_WAIT_US;
@@ -5125,17 +5136,15 @@ static int razer_raw_event_bitfield(struct hid_device *hdev, struct razer_kbd_us
         (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 33) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0))
                             hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), sizeof(xdata), 0);
 #else
-                            hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), 0);
+                            hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), 0, 0);
 #endif
 
                             // report key up
                             xdata[1] = 0x00;
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0) || \
-        (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 0, 10) && LINUX_VERSION_CODE < KERNEL_VERSION(7, 1, 0)) || \
-        (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 33) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0))
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0) || (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 0, 10) && LINUX_VERSION_CODE < KERNEL_VERSION(7, 1, 0)) || (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 33) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0))
                             hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), sizeof(xdata), 0);
 #else
-                            hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), 0);
+                            hid_report_raw_event(hdev, HID_INPUT_REPORT, xdata, sizeof(xdata), 0, 0);
 #endif
                         }
                     }
