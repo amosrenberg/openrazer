@@ -1181,16 +1181,30 @@ class RazerBlackWidowV4MiniHyperSpeedWireless(RazerBlackWidowV4MiniHyperSpeedWir
     USB_PID = 0x02BA
 
 
-class RazerBlackWidowV4LowProfileTklWired():
+class RazerBlackWidowV4LowProfileTenkeylessHyperSpeedWired():
     """
-    Class for the Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed(Wired)
+    Class for the Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed (Wired)
     """
     USB_VID = 0x1532
     USB_PID = 0x02D4
     HAS_MATRIX = True
+    WAVE_DIRS = (1, 2)
+    MATRIX_DIMS = [6, 18]
+    POLL_RATES = [125, 250, 500, 1000]
+    METHODS = ['get_device_type_keyboard', 'set_wave_effect', 'set_static_effect', 'set_spectrum_effect',
+               'set_reactive_effect', 'set_none_effect', 'set_breath_random_effect', 'set_breath_single_effect', 'set_breath_dual_effect',
+               'set_custom_effect', 'set_key_row', 'get_game_mode', 'set_game_mode',
+               'set_starlight_random_effect', 'set_starlight_single_effect', 'set_starlight_dual_effect',
+               'get_poll_rate', 'set_poll_rate', 'get_supported_poll_rates',
+               'set_ripple_effect', 'set_ripple_effect_random_colour', 'get_battery', 'is_charging']
 
     DEVICE_IMAGE = "https://assets2.razerzone.com/images/pnx.assets/d0ebf9b718890099da55f79fb6b4569f/razer-blackwidowv4-mini-hyperspeed-usp5.webp"
 
+class RazerBlackWidowV4LowProfileTenkeylessHyperSpeedWireless(RazerBlackWidowV4LowProfileTenkeylessHyperSpeedWired):
+    """
+    Class for the Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed (Wireless)
+    """
+    USB_PID = 0X02D2
 
 class RazerCynosaChroma(_RippleKeyboard):
     """
