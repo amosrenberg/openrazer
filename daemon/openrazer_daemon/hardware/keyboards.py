@@ -1181,10 +1181,12 @@ class RazerBlackWidowV4MiniHyperSpeedWireless(RazerBlackWidowV4MiniHyperSpeedWir
     USB_PID = 0x02BA
 
 
-class RazerBlackWidowV4LowProfileTenkeylessHyperSpeedWired():
+class RazerBlackWidowV4LowProfileTenkeylessHyperSpeedWired(_RippleKeyboard):
     """
     Class for the Razer BlackWidow V4 Low-Profile Tenkeyless HyperSpeed (Wired)
     """
+    EVENT_FILE_REGEX = re.compile(r'.*Razer_BlackWidow_V4_Low-profile_Tenkeyless_HyperSpeed(-if01)?-event-kbd')
+
     USB_VID = 0x1532
     USB_PID = 0x02D4
     HAS_MATRIX = True
